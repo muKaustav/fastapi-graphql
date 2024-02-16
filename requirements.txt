@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+starlette
+starlette-graphene3
+graphene-sqlalchemy>=2.0
+graphql-core==3.1.5
+psycopg2-binary

@@ -1,0 +1,143 @@
+query {
+	authors {
+		id
+		name
+		verified
+	}
+}
+
+query getAuthor($id: ID!) {
+	author(id: $id) {
+		name
+	}
+}
+
+mutation CreateAuthor($authorData: AuthorInput!) {
+	createAuthor(authorData: $authorData) {
+		author {
+			name
+			verified
+		}
+	}
+}
+
+mutation UpdateAuthor($authorId: Int!, $authorData: AuthorInput!) {
+	updateAuthor(authorId: $authorId, authorData: $authorData) {
+		author {
+			id
+			name
+			verified
+		}
+	}
+}
+
+mutation DeleteAuthor($authorId: Int!) {
+	deleteAuthor(authorId: $authorId) {
+		success
+	}
+}
+
+query {
+	games {
+		id
+		name
+	}
+}
+
+query getGame($id: ID!) {
+	game(id: $id) {
+		name
+	}
+}
+
+mutation CreateGame($gameData: GameInput!) {
+	createGame(gameData: $gameData) {
+		game {
+			name
+			platform
+		}
+	}
+}
+
+mutation UpdateGame($gameId: Int!, $gameData: GameInput!) {
+	updateGame(gameId: $gameId, gameData: $gameData) {
+		game {
+			id
+			name
+			platform
+		}
+	}
+}
+
+mutation DeleteGame($gameId: Int!) {
+	deleteGame(gameId: $gameId) {
+		success
+	}
+}
+
+query {
+	reviews {
+		id
+		title
+		content
+		rating
+		game {
+			id
+		}
+		author {
+			name
+		}
+	}
+}
+
+query getReview($id: ID!) {
+	review(id: $id) {
+		id
+		content
+		author {
+			id
+		}
+		game {
+			id
+		}
+	}
+}
+
+mutation CreateReview($reviewData: ReviewInput!) {
+	createReview(reviewData: $reviewData) {
+		review {
+			title
+			content
+			rating
+			gameId
+			authorId
+		}
+	}
+}
+
+mutation UpdateReview($reviewId: Int!, $reviewData: ReviewInput!) {
+	updateReview(reviewId: $reviewId, reviewData: $reviewData) {
+		review {
+			id
+			title
+			content
+			rating
+			game {
+				id
+				name
+				platform
+			}
+			author {
+				id
+				name
+				verified
+			}
+		}
+	}
+}
+
+mutation DeleteReview($reviewId: Int!) {
+	deleteReview(reviewId: $reviewId) {
+		success
+	}
+}
